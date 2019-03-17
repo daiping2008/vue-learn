@@ -8,8 +8,6 @@
         </swiper>
     </div>
 </template>
-    
-</template>
 
 <script>
 export default {
@@ -36,7 +34,7 @@ export default {
 .wrapper
     width 100%
     height 0
-    padding-bottom 35%
+    padding-bottom 31.25%
     img 
         width 100%
 </style>

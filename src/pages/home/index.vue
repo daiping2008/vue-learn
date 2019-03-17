@@ -2,12 +2,14 @@
     <div>
         <v-header></v-header>
         <v-swiper :data="swiperList"></v-swiper>
+        <home-icons :data="iconList"></home-icons>
     </div>
 </template>
 
 <script>
 import VHeader from './components/head'
 import VSwiper from './components/swiper'
+import HomeIcons from './components/homeIcons'
 import {getIndex} from '@/api'
 export default {
     name:'Home',
@@ -28,7 +30,8 @@ export default {
     },
     components: {
         VHeader,
-        VSwiper
+        VSwiper,
+        HomeIcons
     }
 }
 </script>
