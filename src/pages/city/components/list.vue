@@ -1,12 +1,21 @@
 <template>
     <div class="list" ref="wrapper">
         <div>
+            <div class="area" v-show="city">
+                <div class="title">当前城市</div>
+                <div class="button-list">
+                    <div class="button-wrapper">
+                        <div class="button">{{city}}</div>
+                    </div>
+                </div>
+            </div>
             <div class="area">
                 <div class="title">热门城市</div>
                 <div class="button-list">
                     <div 
                         v-for="item in hotCities" 
                         :key="item.id" 
+                        @click="handleChangeCity(item.name)"
                         class="button-wrapper">
                         <div class="button">{{item.name}}</div>
                     </div>
@@ -22,6 +31,7 @@
                     <div
                         v-for="city in item"
                         :key="city.id"
+                        @click="handleChangeCity(city.name)"
                         class="item">
                         {{city.name}}
                     </div>
@@ -34,11 +44,14 @@
 <script>
 import BScroll from 'better-scroll'
 export default {
-    props:['cities', 'hotCities', 'letter'],
+    props:['city', 'cities', 'hotCities', 'letter'],
     mounted(){
         this.scroll = new BScroll(this.$refs.wrapper)
     },
-    computed:{
+    methods:{
+        handleChangeCity(city){
+            this.$emit('changeCity', city)
+        }
     },
     watch:{
         letter(){
