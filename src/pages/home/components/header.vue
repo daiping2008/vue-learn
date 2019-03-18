@@ -4,7 +4,11 @@
             <i class="iconfont back-icon">&#xe6bc;</i>
         </div>
         <div class="header-input"><i class="iconfont">&#xe819;</i>输入城市/景点/游玩主题</div>
-        <div class="header-right">城市<i class="iconfont arrow-icon">&#xe64a;</i></div>
+         <router-link to="/city">
+            <div class="header-right">
+                城市<i class="iconfont arrow-icon">&#xe64a;</i>
+            </div>
+        </router-link>
     </div>
 </template>
 
@@ -33,6 +37,7 @@ export default {
         float right
         padding 0 .1rem
         text-align center
+        color #fff
         .arrow-icon
             margin-left 0.04rem
             font-size .24rem

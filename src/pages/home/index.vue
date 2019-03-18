@@ -1,7 +1,7 @@
 <template>
     <div>
-        <v-header></v-header>
-        <v-swiper :data="swiperList"></v-swiper>
+        <home-header></home-header>
+        <home-swiper :data="swiperList"></home-swiper>
         <home-icons :data="iconList"></home-icons>
         <home-recommend :data="recommendList"></home-recommend>
         <home-weekend :data="weekendList"></home-weekend>
@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import VHeader from './components/head'
-import VSwiper from './components/swiper'
+import HomeHeader from './components/header'
+import HomeSwiper from './components/swiper'
 import HomeIcons from './components/homeIcons'
 import HomeRecommend from './components/recommend'
 import HomeWeekend from './components/weekend'
@@ -33,8 +33,8 @@ export default {
        this.weekendList = data.weekendList
     },
     components: {
-        VHeader,
-        VSwiper,
+        HomeHeader,
+        HomeSwiper,
         HomeIcons,
         HomeRecommend,
         HomeWeekend
