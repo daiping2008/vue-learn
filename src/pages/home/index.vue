@@ -3,6 +3,8 @@
         <v-header></v-header>
         <v-swiper :data="swiperList"></v-swiper>
         <home-icons :data="iconList"></home-icons>
+        <home-recommend :data="recommendList"></home-recommend>
+        <home-weekend :data="weekendList"></home-weekend>
     </div>
 </template>
 
@@ -10,6 +12,8 @@
 import VHeader from './components/head'
 import VSwiper from './components/swiper'
 import HomeIcons from './components/homeIcons'
+import HomeRecommend from './components/recommend'
+import HomeWeekend from './components/weekend'
 import {getIndex} from '@/api'
 export default {
     name:'Home',
@@ -31,7 +35,9 @@ export default {
     components: {
         VHeader,
         VSwiper,
-        HomeIcons
+        HomeIcons,
+        HomeRecommend,
+        HomeWeekend
     }
 }
 </script>
