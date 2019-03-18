@@ -14,16 +14,19 @@ const routes = [
     },
     {
         path:'/city',
-        name:'City',
+        name:'city',
         component:City
     },
     {
         path:'/detail/:id',
-        name:'Detail',
+        name:'detail',
         component:Detail
     }
 ]
 
 export default new VueRouter({
-    routes
+    routes,
+    scrollBehavior (to, from, savedPosition) {
+        return { x: 0, y: 0 }
+    }
 })

@@ -17,7 +17,7 @@ import HomeWeekend from './components/weekend'
 import {loadFromLocal} from '@/common/js/localStorage'
 import {CURR_CITY} from '@/common/js/localStorageKey'
 import {getIndex} from '@/api'
-import {mapActions} from 'vuex'
+import {mapState, mapActions} from 'vuex'
 export default {
     name:'Home',
     data(){
@@ -26,21 +26,31 @@ export default {
             swiperList:[],
             recommendList:[],
             iconList:[],
-            weekendList:[]
+            weekendList:[],
+            lastCity:''
         }
     },
-    async mounted(){
-        let {data} = await getIndex()
-        this.swiperList = data.swiperList
-        this.recommendList = data.recommendList
-        this.iconList = data.iconList
-        this.weekendList = data.weekendList
+    mounted(){
         const city = loadFromLocal(this.suerId, CURR_CITY)
         if (city) {
             this.changeCityAction(city)
+            this.lastCity = city
         }
+        this.getHomeData()
+    },
+    computed:{
+        ...mapState(['city'])
     },
     methods:{
+        async getHomeData() {
+            let {data} = await getIndex({
+                city:this.lastCity
+            })
+            this.swiperList = data.swiperList
+            this.recommendList = data.recommendList
+            this.iconList = data.iconList
+            this.weekendList = data.weekendList
+        },
         ...mapActions(['changeCityAction'])
     },
     components: {
@@ -49,6 +59,12 @@ export default {
         HomeIcons,
         HomeRecommend,
         HomeWeekend
+    },
+    activated(){
+        if (this.lastCity !== this.city) {
+            this.lastCity = this.city
+            this.getHomeData()
+        }
     }
 }
 </script>
